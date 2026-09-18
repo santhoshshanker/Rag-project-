@@ -288,10 +288,14 @@ class DentalVectorStore:
         }
 
     def save_to_disk(self):
-        with open(self.docs_file, 'w', encoding='utf-8') as f:
-            json.dump(self.documents, f, indent=2)
-        with open(self.chunks_file, 'w', encoding='utf-8') as f:
-            json.dump(self.chunks, f, indent=2)
+        try:
+            with open(self.docs_file, 'w', encoding='utf-8') as f:
+                json.dump(self.documents, f, indent=2)
+            with open(self.chunks_file, 'w', encoding='utf-8') as f:
+                json.dump(self.chunks, f, indent=2)
+        except (OSError, IOError) as e:
+            print(f"Notice: Read-only filesystem detected, skipping save_to_disk: {e}")
+
 
     def load_from_disk(self):
         if os.path.exists(self.docs_file) and os.path.exists(self.chunks_file):

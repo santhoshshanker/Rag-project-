@@ -40,9 +40,13 @@ class DentalLLMOrchestrator:
 
     def save_config(self, new_config: Dict[str, Any]):
         self.config.update(new_config)
-        os.makedirs(os.path.dirname(self.config_file), exist_ok=True)
-        with open(self.config_file, 'w', encoding='utf-8') as f:
-            json.dump(self.config, f, indent=2)
+        try:
+            os.makedirs(os.path.dirname(self.config_file), exist_ok=True)
+            with open(self.config_file, 'w', encoding='utf-8') as f:
+                json.dump(self.config, f, indent=2)
+        except (OSError, IOError) as e:
+            print(f"Notice: Read-only filesystem detected, skipping save_config: {e}")
+
 
     def generate_answer(
         self,

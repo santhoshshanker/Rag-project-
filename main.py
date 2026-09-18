@@ -2,6 +2,9 @@ import uvicorn
 import os
 import sys
 
+# Top-level ASGI app for Vercel, Gunicorn, and serverless runtimes
+from backend.server import app
+
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -16,7 +19,8 @@ def main():
     print(f"🚀 Running locally on: http://localhost:{port}")
     print(f"🔗 Also available at: http://127.0.0.1:{port}")
     print(f"========================================================\n")
-    uvicorn.run("backend.server:app", host="127.0.0.1", port=port, reload=False)
+    uvicorn.run(app, host="127.0.0.1", port=port, reload=False)
 
 if __name__ == "__main__":
     main()
+

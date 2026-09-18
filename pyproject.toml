@@ -1,0 +1,9 @@
+[project]
+name = "dental-assistant-copilot"
+version = "1.0.0"
+description = "Clinical Dental Assistant Copilot RAG Web Application"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.vercel]
+entrypoint = "backend.server:app"
