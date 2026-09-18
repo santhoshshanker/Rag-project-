@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables & API keys
+.env
+.env.*
+*.env
+data/config.json
+
+# Test and coverage artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+data_test/
+
+# Application logs & temporary files
+*.log
+scratch/
+tmp/
+temp/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if used for front-end utilities)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

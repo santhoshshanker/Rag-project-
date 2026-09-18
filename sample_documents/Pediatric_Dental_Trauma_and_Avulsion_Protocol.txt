@@ -1,0 +1,44 @@
+CLINICAL DENTAL PRACTICE GUIDELINE: PEDIATRIC DENTAL TRAUMA & TOOTH AVULSION MANAGEMENT
+International Association of Dental Traumatology (IADT) Reference Guidelines
+Guideline Code: DENT-TRAUMA-2024-V2
+
+1. GENERAL ASSESSMENT & TRIAGE
+- Immediate Neurological & Medical Screen:
+  * Check for concussion, loss of consciousness, nausea, vomiting, dizziness, or neck pain. If present, refer immediately to emergency department.
+  * Check tetanus immunization status. If the patient has not had a booster within 5 years or wound is contaminated with dirt/soil, administer tetanus prophylaxis within 48 hours.
+
+2. TOOTH AVULSION PROTOCOLS
+A. Primary Teeth (Deciduous Dentition) - AGES 0 TO 6 YEARS:
+- CRITICAL RULE: NEVER REPLANT AN AVULSED PRIMARY TOOTH!
+- Replantation of primary teeth can damage the developing permanent tooth germ beneath the socket (causing enamel hypoplasia, dilaceration, or arrest of permanent tooth eruption).
+- Protocol: Confirm tooth has been completely expelled (take radiograph if aspirated or intruded). Reassure parents, prescribe soft diet for 7-10 days, monitor for gingival healing.
+
+B. Permanent Teeth (Dentition in Children & Adults):
+- Emergency First Aid at Scene of Injury:
+  * Hold tooth only by the crown; NEVER touch or scrape the root.
+  * If dirty, rinse gently under cold running water for 10 seconds (do not scrub).
+  * Immediately replant into the socket if possible, and have patient bite gently on a clean handkerchief or gauze.
+- Storage & Transport Media (when immediate replantation not possible):
+  1. Hank's Balanced Salt Solution (HBSS) - Gold standard, maintains periodontal ligament (PDL) cell viability for up to 24 hours.
+  2. Cold Bovine Milk - Readily available, optimal osmolarity, keeps cells viable up to 6 hours.
+  3. Saliva (buccal vestibule or spit into a container) - Viable for 1-2 hours.
+  4. Physiological Saline.
+  * WARNING: NEVER store avulsed tooth in tap water (hypotonic, causes rapid cell lysis).
+- Clinical Treatment at Dental Office:
+  * Extra-oral dry time < 60 minutes:
+    - Rinse root gently with saline. Irrigate socket gently with saline to remove blood clot.
+    - Replant tooth with gentle finger pressure.
+    - Apply flexible splint (0.016" stainless steel wire with composite resin) for 2 WEEKS.
+    - Rigid splinting is contraindicated (promotes replacement resorption / ankylosis).
+  * Extra-oral dry time > 60 minutes:
+    - PDL cells are non-viable. Ankylosis and root resorption are inevitable.
+    - Remove necrotic PDL tissue, soak in 2% sodium fluoride for 20 minutes to slow resorption.
+    - Replant and place flexible splint for 4 WEEKS.
+- Systemic Medications & Prophylaxis:
+  * Antibiotic Therapy:
+    - For children > 12 years / adults: Doxycycline 100 mg BID for 7 days.
+    - For children < 12 years (risk of tooth discoloration with tetracyclines): Amoxicillin 50 mg/kg/day divided TID for 7 days (or Clindamycin if penicillin-allergic).
+  * Chlorhexidine 0.12% mouth rinse BID for 2 weeks to assist oral hygiene.
+- Endodontic Follow-up:
+  * Teeth with closed apex: Initiate root canal therapy within 7 to 10 days after replantation (before splint removal) to prevent inflammatory root resorption. Place Ca(OH)2 paste.
+  * Teeth with open apex (immature root): Monitor for revascularization; delay endodontics unless symptoms or radiographic signs of necrosis appear.

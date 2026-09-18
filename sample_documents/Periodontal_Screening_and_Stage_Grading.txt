@@ -1,0 +1,50 @@
+CLINICAL DENTAL PRACTICE GUIDELINE: PERIODONTAL DIAGNOSIS, STAGING, AND GRADING
+American Academy of Periodontology (AAP) and European Federation of Periodontology (EFP)
+Guideline Code: DENT-PERIO-2024-V1
+
+1. PERIODONTAL STAGING (SEVERITY & EXTENT OF DISEASE)
+- Stage I (Initial Periodontitis):
+  * Clinical Attachment Loss (CAL): 1 to 2 mm at site of greatest loss.
+  * Radiographic Bone Loss (RBL): Coronal third (< 15% root length).
+  * Probing Depth (PD): Max <= 4 mm.
+  * Tooth Loss: No tooth loss due to periodontitis.
+  * Bone Loss Pattern: Mostly horizontal bone loss.
+
+- Stage II (Moderate Periodontitis):
+  * CAL: 3 to 4 mm.
+  * RBL: Coronal third (15% to 33% root length).
+  * Probing Depth: Max <= 5 mm.
+  * Tooth Loss: No tooth loss due to periodontitis.
+  * Bone Loss Pattern: Mostly horizontal.
+
+- Stage III (Severe Periodontitis with Potential for Additional Tooth Loss):
+  * CAL: >= 5 mm.
+  * RBL: Extending to middle third of root or beyond (> 33%).
+  * Probing Depth: >= 6 mm.
+  * Tooth Loss: <= 4 teeth lost due to periodontitis.
+  * Complexity: Vertical bone loss >= 3 mm, furcation involvement Class II or III, moderate ridge defect.
+
+- Stage IV (Advanced Periodontitis with Potential for Dentition Loss):
+  * CAL: >= 5 mm.
+  * RBL: Extending to middle third of root or beyond.
+  * Tooth Loss: >= 5 teeth lost due to periodontitis.
+  * Complexity: Severe masticatory dysfunction, secondary occlusal trauma, tooth mobility degree >= 2, severe ridge defects, less than 20 remaining teeth (10 opposing pairs).
+
+2. PERIODONTAL GRADING (RATE OF PROGRESSION & SYSTEMIC MODIFIERS)
+- Grade A (Slow Rate of Progression):
+  * Objective Evidence: No bone loss over 5 years; RBL/age ratio < 0.25.
+  * Risk Factor Modifiers: Non-smoker, normoglycemic / non-diabetic.
+
+- Grade B (Moderate Rate of Progression):
+  * Objective Evidence: < 2 mm bone loss over 5 years; RBL/age ratio 0.25 to 1.0.
+  * Risk Factor Modifiers: Smoker < 10 cigarettes/day; HbA1c < 7.0% in diabetic patients.
+
+- Grade C (Rapid Rate of Progression):
+  * Objective Evidence: >= 2 mm bone loss over 5 years; RBL/age ratio > 1.0.
+  * Risk Factor Modifiers: Smoker >= 10 cigarettes/day; HbA1c >= 7.0% in diabetic patients.
+
+3. TREATMENT PROTOCOLS & CLINICAL SEQUENCING
+- Step 1: Periodontal health education, supragingival plaque control, chlorhexidine 0.12% rinse, smoking cessation counseling, glycemic control coordination.
+- Step 2: Subgingival instrumentation (Scaling and Root Planing - SRP) using ultrasonic scalers and site-specific Gracey curettes under local anesthesia.
+- Step 3 (if residual pockets >= 6 mm persist after 6-8 weeks re-evaluation): Periodontal flap surgery, resective surgery, or guided tissue regeneration (GTR) using bone grafts and barrier membranes.
+- Step 4: Supportive Periodontal Therapy (SPT) / Maintenance visits every 3 months.

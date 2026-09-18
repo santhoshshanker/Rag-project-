@@ -1,0 +1,41 @@
+CLINICAL DENTAL PRACTICE GUIDELINE: LOCAL ANESTHESIA DOSING, CALCULATIONS, AND TOXICITY PROTOCOL
+Department of Oral and Maxillofacial Surgery & Dental Therapeutics
+Guideline Code: DENT-ANESTH-2024-V2
+
+1. COMMONLY USED LOCAL ANESTHETICS IN DENTISTRY
+A. Lidocaine HCl 2% with 1:100,000 Epinephrine
+- Concentration: 2% lidocaine = 20 mg/mL. Standard dental cartridge contains 1.8 mL = 36 mg of lidocaine hydrochloride.
+- Vasoconstrictor: Epinephrine 1:100,000 = 0.01 mg/mL = 0.018 mg epinephrine per 1.8 mL cartridge.
+- Maximum Recommended Dose (MRD) - Healthy Adult: 4.4 mg/kg (or 2.0 mg/lb), with an absolute maximum ceiling of 300 mg (approximately 8.3 cartridges for a 70 kg adult).
+- Pediatric MRD: 4.4 mg/kg strictly calculated based on actual body weight.
+  * Example: For a 20 kg child: 20 kg x 4.4 mg/kg = 88 mg max lidocaine. 88 mg / 36 mg per cartridge = 2.4 cartridges maximum.
+  * Example: For a 30 kg child: 30 kg x 4.4 mg/kg = 132 mg max lidocaine. 132 mg / 36 mg per cartridge = 3.6 cartridges maximum.
+- Onset: 2 to 4 minutes. Pulpal anesthesia duration: 60 minutes. Soft tissue anesthesia: 3 to 5 hours.
+
+B. Articaine HCl 4% with 1:100,000 or 1:200,000 Epinephrine
+- Concentration: 4% articaine = 40 mg/mL. A 1.8 mL cartridge contains 72 mg of articaine hydrochloride.
+- Maximum Recommended Dose: 7.0 mg/kg (3.2 mg/lb) up to an absolute maximum ceiling of 500 mg.
+- High lipid solubility provides superior bone penetration (useful for mandibular buccal infiltration in molars).
+- Caution: Higher reported risk of paresthesia with mandibular nerve blocks; recommended primarily for maxillary infiltration and mandibular infiltration.
+
+C. Mepivacaine 3% Plain (Without Vasoconstrictor)
+- Concentration: 3% mepivacaine = 30 mg/mL = 54 mg per 1.8 mL cartridge.
+- Maximum Recommended Dose: 4.4 mg/kg, absolute max 300 mg (approximately 5.5 cartridges).
+- Indication: Patients for whom epinephrine is contraindicated (severe cardiovascular disease, uncontrolled hyperthyroidism, sulfite allergy).
+
+2. VASOCONSTRICTOR LIMITS IN MEDICALLY COMPROMISED PATIENTS
+- Healthy Patient (ASA I): Maximum epinephrine dose per appointment is 0.2 mg (up to 11 cartridges of 1:100,000).
+- Cardiac / Cardiovascular Compromise (ASA III or IV):
+  * Maximum epinephrine dose per appointment is restricted to 0.04 mg (equivalent to MAXIMUM TWO cartridges of 1:100,000 epinephrine).
+  * Always aspirate in two planes before injection to prevent accidental intravascular administration.
+  * Contraindicated in patients with unstable angina, recent myocardial infarction (< 6 months), refractory arrhythmias, or uncontrolled hypertension (BP > 180/110 mmHg).
+
+3. SIGNS OF LOCAL ANESTHETIC SYSTEMIC TOXICITY (LAST)
+- Early CNS Excitation: Metallic taste in mouth, circumoral numbness, tinnitus, lightheadedness, restlessness, visual disturbances, slurred speech.
+- Progression: Muscle twitching, tremors, generalized tonic-clonic seizures.
+- CNS & Cardiovascular Collapse: Respiratory depression, bradycardia, hypotension, ventricular arrhythmias, cardiac arrest.
+- Emergency Management:
+  1. Terminate dental procedure immediately.
+  2. Call Emergency Medical Services (911).
+  3. Maintain airway, administer 100% oxygen via non-rebreather mask.
+  4. In severe LAST with hemodynamic instability, administer 20% Intralipid emulsion (1.5 mL/kg initial bolus).

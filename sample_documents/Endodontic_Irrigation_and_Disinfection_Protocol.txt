@@ -1,0 +1,40 @@
+CLINICAL DENTAL PRACTICE GUIDELINE: ENDODONTIC IRRIGATION, DISINFECTION, AND FLARE-UP MANAGEMENT
+American Association of Endodontists Reference Protocol
+Guideline Code: ENDO-IRRIG-2024-V3
+
+1. PRIMARY IRRIGATING SOLUTIONS & MECHANISM OF ACTION
+A. Sodium Hypochlorite (NaOCl) - 2.5% to 5.25%
+- Indication: Gold standard primary antimicrobial and organic tissue solvent.
+- Properties: Dissolves vital and necrotic pulp tissue remnants, disrupts biofilm, and eliminates Enterococcus faecalis.
+- Application Protocol: Continual gentle replenishment throughout root canal instrumentation. Deliver at least 2 mL per canal between instrument changes using a 30-gauge side-vented needle placed 1-2 mm short of working length.
+- Heating NaOCl (to 45°C - 60°C) or ultrasonic activation (passive ultrasonic irrigation - PUI) substantially enhances dissolution rate and tissue penetration into lateral canals and isthmuses.
+- Hypochlorite Accident Prevention:
+  * NEVER inject NaOCl with wedged needle.
+  * Always verify needle moves freely in the canal space.
+  * If accident occurs (sudden excruciating pain, rapid facial swelling, profuse interstitial bleeding): immediately cease irrigation, inject local anesthetic for pain, prescribe analgesics, cold compresses first 24 hours followed by warm compresses, and antibiotic coverage (e.g., Amoxicillin 500 mg TID or Clindamycin for penicillin-allergic patients).
+
+B. Ethylenediaminetetraacetic Acid (EDTA) - 17% Solution
+- Indication: Chelating agent for removal of the inorganic smear layer created during mechanical rotary or hand instrumentation.
+- Protocol: After completing mechanical preparation and NaOCl irrigation, rinse canal with 1-2 mL of 17% EDTA for 1 minute.
+- Rationale: Opens dentinal tubules to permit deep penetration of root canal sealers and subsequent disinfection agents.
+- Important Timing: Do not leave EDTA in canal for more than 1 to 2 minutes as prolonged exposure can cause excessive dentinal erosion and tooth weakening.
+
+C. Chemical Interaction Warning: NaOCl + Chlorhexidine Gluconate (CHX)
+- WARNING: Direct mixing of Sodium Hypochlorite (NaOCl) with Chlorhexidine (CHX 2%) produces an insoluble brownish-orange precipitate (Parachloroaniline - PCA).
+- PCA is cytotoxic, occludes dentinal tubules, and stains the tooth structure.
+- Strict Protocol: If using 2% CHX as a final antimicrobial flush, ALWAYS thoroughly rinse and dry the canal with sterile saline or sterile water between NaOCl and CHX applications to prevent precipitate formation.
+
+2. INTRACANAL MEDICAMENT
+- Calcium Hydroxide Paste [Ca(OH)2]:
+  * Standard inter-appointment medicament for teeth with apical periodontitis or necrotic pulps.
+  * High pH (~12.5) provides potent antimicrobial coverage and denatures bacterial lipopolysaccharides (endotoxins).
+  * Minimum recommended intracanal duration: 7 to 14 days.
+
+3. EMERGENCY ENDODONTIC FLARE-UP MANAGEMENT
+- Characterized by severe pain and/or swelling starting a few hours or days following endodontic intervention.
+- Immediate Steps:
+  1. Re-evaluate occlusion and relieve any hyper-occlusal contact points immediately.
+  2. Re-open tooth under rubber dam isolation, re-irrigate thoroughly with copious warm NaOCl, dry with sterile paper points.
+  3. Re-medicate with Ca(OH)2 paste and place secure double seal (Cavit / IRM + Glass Ionomer).
+  4. Pharmacological Pain Management: Combine Ibuprofen 600 mg + Acetaminophen 500 mg every 6 hours for synergistic analgesia.
+  5. Antibiotics are NOT indicated for localized irreversible pulpitis or symptomatic apical periodontitis unless systemic symptoms (fever > 38°C, malaise, lymphadenopathy, or spreading facial cellulitis) are present.

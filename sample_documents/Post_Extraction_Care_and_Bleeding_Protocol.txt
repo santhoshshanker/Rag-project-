@@ -1,0 +1,40 @@
+CLINICAL DENTAL PRACTICE GUIDELINE: POST-EXTRACTION SURGICAL PROTOCOL, BLEEDING CONTROL, AND DRY SOCKET MANAGEMENT
+Oral and Maxillofacial Surgery Clinical Protocols
+Guideline Code: DENT-SURG-2024-V1
+
+1. ROUTINE POST-EXTRACTION CARE & HEMOSTASIS
+- Primary Hemostasis:
+  * Place sterile folded gauze directly over extraction socket. Instruct patient to apply firm, steady biting pressure for 30 to 45 minutes continuously.
+  * Avoid spitting, rinsing, drinking through straws, smoking, or vigorous exercise for 24 hours to prevent dislodging the initial blood clot.
+  * Ice packs applied externally (20 minutes on, 20 minutes off) for the first 24 hours to minimize postoperative edema.
+- Secondary Hemostasis for Persistent Oozing:
+  * If mild bleeding persists after 45 minutes, replace with a damp black tea bag wrapped in gauze and bite firmly for 30 minutes. Tannic acid in tea promotes local platelet aggregation and vasoconstriction.
+  * For persistent socket bleeding: Inspect socket under good illumination. Clean excess liver clot with suction. Place topical hemostatic agents:
+    - Oxidized regenerated cellulose (Surgicel) or absorbable gelatin sponge (Gelfoam) into socket.
+    - Place figure-of-eight 3-0 or 4-0 resorbable suture (Vicryl or Chromic Gut) across the socket margins.
+    - Local injection of 2% lidocaine with 1:100,000 epinephrine directly into surrounding gingival papillae for vasoconstriction.
+  * Topical Tranexamic Acid (TXA): 5% rinse (crush 500 mg tablet in 10 mL water) or soak gauze in TXA solution and hold under pressure for 20 minutes.
+
+2. MANAGEMENT OF PATIENTS ON ANTICOAGULANTS OR ANTIPLATELET THERAPY
+- Warfarin (Coumadin): Check INR within 24 hours before procedure.
+  * Therapeutic INR range between 2.0 and 3.0: Routine extractions can proceed safely without discontinuing Warfarin. Do NOT stop Warfarin due to rebound thromboembolism risk.
+  * Use local hemostatic measures (Gelfoam/Surgicel, TXA mouthwash, primary closure with sutures).
+- Direct Oral Anticoagulants (DOACs - Apixaban, Rivaroxaban, Dabigatran):
+  * For standard single or simple extractions, DOAC discontinuation is generally unnecessary.
+  * Schedule surgery 12 to 24 hours after last dose; next dose taken after definitive hemostasis achieved.
+- Antiplatelet Agents (Aspirin 81 mg, Clopidogrel 75 mg): Maintain therapy. Rely on local hemostatic agents.
+
+3. DRY SOCKET (ALVEOLAR OSTEITIS)
+- Definition: Premature breakdown and fibrinolysis of blood clot within extraction socket, exposing alveolar bone and nerve endings.
+- Incidence: 1-3% of routine extractions, up to 25-30% of impacted mandibular third molars.
+- Risk Factors: Tobacco smoking, oral contraceptives, difficult traumatic extraction, poor oral hygiene, female gender.
+- Clinical Presentation:
+  * Severe, throbbing, radiating pain developing 2 to 4 days post-operatively.
+  * Pain often radiates to ear, temple, or eye.
+  * Characteristic foul odor (halitosis), metallic bad taste, and visibly empty socket denuded of clot with exposed grayish bone.
+- Treatment Protocol:
+  1. Gently irrigate socket with warm sterile saline or 0.12% Chlorhexidine to flush necrotic food debris. Do NOT aggressively curette the bone, as this causes further bone trauma and delays healing.
+  2. Place a small sedating dressing: Zinc Oxide Eugenol paste on iodoform gauze or Alveogyl (eugenol-impregnated fiber dressing).
+  3. Change dressing every 24 to 48 hours until pain resolves (usually 3 to 6 days).
+  4. Prescribe NSAIDs (Ibuprofen 600-800 mg TID with food) for analgesia.
+  5. Note: Antibiotics are NOT routinely indicated for dry socket unless there is spreading cellulitis, fever, or trismus.

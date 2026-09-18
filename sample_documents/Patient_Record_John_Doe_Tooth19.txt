@@ -1,0 +1,43 @@
+CONFIDENTIAL PATIENT DENTAL RECORD & CLINICAL ENCOUNTER NOTE
+Metro Dental Specialty Center - Electronic Health Record (EHR)
+Chart Number: EHR-2024-9941
+Encounter Date: September 12, 2024
+Attending Dentist: Dr. Sarah Lin, DDS
+Dental Assistant: Alex Rivera, RDA
+
+1. PATIENT DEMOGRAPHICS
+- Full Name: John Doe
+- Date of Birth: March 14, 1982 (Age: 42 years)
+- Biological Sex: Male
+- Weight: 78 kg (172 lbs)
+- Emergency Contact: Mary Doe (Spouse) - 555-019-2831
+
+2. MEDICAL HISTORY & SYSTEMIC ALERTS
+- Systemic Conditions: Essential Hypertension (diagnosed 2019, controlled on Lisinopril 10 mg daily).
+- Medical Alerts / Drug Allergies:
+  * PENICILLIN ALLERGY: Severe anaphylactoid reaction with generalized urticaria and wheezing in 2018. Strictly avoid all Penicillins, Amoxicillin, Augmentin, and Cephalosporins. Alternative recommended: Clindamycin 300 mg or Azithromycin 500 mg.
+  * Latex sensitivity: Minor contact dermatitis. Use nitrile gloves and non-latex dental dam exclusively.
+- Current Medications: Lisinopril 10 mg PO daily, Multivitamin.
+- ASA Physical Status Classification: ASA II (Mild systemic disease, well-controlled hypertension).
+- Vital Signs at Encounter: Blood Pressure 128/82 mmHg, Pulse 72 bpm, SpO2 99% on room air.
+
+3. DENTAL CHIEF COMPLAINT & HISTORY OF PRESENT ILLNESS
+- Chief Complaint: "Severe throbbing pain and swelling on my lower left jaw since yesterday, and my tooth broke while eating."
+- History of Present Illness: Patient reports biting down on an olive pit 48 hours ago resulting in a loud crack in the lower left molar region. Progressed to constant throbbing pain exacerbated by cold drinks and mastication.
+
+4. CLINICAL & RADIOGRAPHIC FINDINGS
+- Tooth Involved: #19 (Mandibular Left First Molar)
+- Visual Inspection: Extensive distal-occlusal composite restoration with visible vertical fracture line extending subgingivally along the lingual aspect into the furcation. Deep caries beneath margins.
+- Periodontal Probing: Isolated 8 mm probing depth along the mid-lingual aspect directly tracing the fracture line. Surrounding sites probe 2 to 3 mm. Bleeding upon probing positive.
+- Periapical Radiograph & Bitewing: J-shaped radiolucency around mesial and distal roots indicative of combined endodontic-periodontal communication. Furcation involvement Class II. The vertical root fracture is clinically non-restorable.
+- Diagnosis: Non-restorable Vertical Root Fracture with Acute Apical Abscess on Tooth #19.
+
+5. PROPOSED TREATMENT PLAN
+- Phase 1: Surgical extraction of tooth #19 under local anesthesia (Lidocaine 2% with 1:100,000 epinephrine, max 2-3 cartridges).
+- Phase 2: Socket debridement and socket preservation with freeze-dried bone allograft (FDBA) + collagen membrane (Bio-Gide) to maintain alveolar ridge height and width.
+- Phase 3: Delayed single endosseous titanium implant placement (3 to 4 months post-extraction healing) followed by screw-retained ceramic crown restoration.
+- Post-Operative Prescriptions & Instructions:
+  * Analgesia: Ibuprofen 600 mg every 6 hours alternating with Acetaminophen 500 mg every 6 hours PRN pain.
+  * Antibiotic (if needed for spreading infection): Clindamycin 300 mg QID for 7 days (Penicillin allergy noted!).
+  * Chlorhexidine 0.12% oral rinse BID starting 24 hours post-op.
+  * Routine post-extraction precautions: 24 hours bite pressure, no straws, no spitting.
