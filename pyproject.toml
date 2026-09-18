@@ -7,3 +7,6 @@ requires-python = ">=3.9"
 
 [tool.vercel]
 entrypoint = "backend.server:app"
+
+[tool.vercel.fastapi.static]
+cdn = true

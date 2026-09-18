@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Assistant Copilot | Chairside Clinical AI Chatbot</title>
+  <meta name="description" content="AI-powered Chairside Dental Clinical Chatbot with evidence-grounded RAG retrieval, patient safety alerts, voice dictation, and multi-session consultation management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!-- App Container -->
+  <div id="app" class="app-root">
+
+    <!-- Mobile Header Overlay Backdrop -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>
+
+    <!-- Left Navigation Sidebar: Chat Sessions, Patient, Knowledge -->
+    <aside class="sidebar-panel" id="sidebar-panel">
+      
+      <!-- Sidebar Brand Header -->
+      <div class="sidebar-brand">
+        <div class="brand-badge">
+          <div class="tooth-icon-wrap">
+            <svg class="tooth-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.5 2 7 4.5 7 7c0 2 .5 4 1 6 .6 2.4 1 5 2 7 1 2 2 2 2 0 0-2 .5-4 1-6 .5-2 1-4 1-6 0-2.5-1.5-5-5-5zm-5 5c0-1.8 1-3.2 3.5-3.8-.4 1.2-.5 2.5-.5 3.8 0 1.2.2 2.4.6 3.5-1.7-.8-3.6-2-3.6-3.5zm10 0c0 1.5-1.9 2.7-3.6 3.5.4-1.1.6-2.3.6-3.5 0-1.3-.1-2.6-.5-3.8 2.5.6 3.5 2 3.5 3.8z"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-title">Dental <span class="copilot-badge">Copilot</span></h1>
+            <p class="brand-subtitle">Clinical AI Chatbot</p>
+          </div>
+        </div>
+        <button id="close-sidebar-btn" class="icon-btn mobile-only" aria-label="Close Sidebar">×</button>
+      </div>
+
+      <!-- New Consultation Action Button -->
+      <div class="sidebar-action-wrap">
+        <button id="new-chat-btn" class="btn btn-new-chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>New Consultation</span>
+        </button>
+      </div>
+
+      <!-- Sidebar Navigation Tabs (Sessions / Patient / Documents) -->
+      <div class="sidebar-nav-tabs">
+        <button class="nav-tab active" data-view="view-sessions" title="Recent Consultations">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Chats
+        </button>
+        <button class="nav-tab" data-view="view-patient" title="Patient Context">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Patient
+        </button>
+        <button class="nav-tab" data-view="view-docs" title="Knowledge Base">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Docs (<span id="docs-count-badge">6</span>)
+        </button>
+      </div>
+
+      <!-- Tab View 1: Chat Sessions History -->
+      <div class="sidebar-view-content active" id="view-sessions">
+        <div class="session-section-title">Recent Conversations</div>
+        <div class="sessions-list" id="sessions-list-container">
+          <!-- Dynamically populated session items -->
+        </div>
+      </div>
+
+      <!-- Tab View 2: Patient Context -->
+      <div class="sidebar-view-content" id="view-patient">
+        <div class="panel-section">
+          <label for="patient-preset-select" class="section-label">Quick Patient Presets</label>
+          <select id="patient-preset-select" class="form-select">
+            <option value="p1">John Doe (42y • Penicillin Allergy)</option>
+            <option value="p2">Emma Watson (8y • Avulsed #8)</option>
+            <option value="p3">Robert Vance (67y • Warfarin/AFib)</option>
+            <option value="p4">Maria Garcia (29y • Pulpitis #3)</option>
+          </select>
+        </div>
+
+        <div class="patient-card-summary">
+          <div class="patient-card-header">
+            <strong id="sidebar-patient-name">John Doe</strong>
+            <span class="patient-badge-age" id="sidebar-patient-age">42y • Male</span>
+          </div>
+          <div class="patient-detail-line">
+            <span class="detail-label">Treatment:</span>
+            <span id="sidebar-patient-treatment">Oral Surgery & Implant</span>
+          </div>
+          <div class="patient-detail-line">
+            <span class="detail-label">Chief Complaint:</span>
+            <p id="sidebar-patient-complaint" class="detail-text">Severe throbbing lower left jaw pain, fractured tooth #19 on olive pit.</p>
+          </div>
+          
+          <div class="patient-alerts-section">
+            <span class="detail-label">Safety Alerts / Allergies:</span>
+            <div class="tags-container" id="patient-alerts-tags">
+              <!-- Dynamically populated tags -->
+            </div>
+          </div>
+
+          <button id="edit-patient-btn" class="btn btn-secondary btn-sm btn-block" style="margin-top: 0.75rem;">
+            ✏️ Edit Patient Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab View 3: Knowledge Library -->
+      <div class="sidebar-view-content" id="view-docs">
+        <div class="panel-section">
+          <div class="section-header">
+            <span class="section-label">Upload Documents</span>
+            <span class="badge-accent">PDF / TXT</span>
+          </div>
+          <p class="section-desc">Drag dental clinical guidelines or EHR records to index into RAG vector memory.</p>
+          
+          <!-- Drop Zone -->
+          <div class="drop-zone" id="document-drop-zone">
+            <input type="file" id="document-file-input" class="file-input" accept=".pdf,.txt,.md,.json,.csv" multiple />
+            <div class="drop-zone-content">
+              <div class="upload-icon-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <div class="drop-zone-text">
+                <strong>Upload Guidelines</strong>
+                <span>PDF or TXT</span>
+              </div>
+            </div>
+            <div id="upload-progress-bar" class="progress-bar-container hidden">
+              <div class="progress-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-section flex-grow-section">
+          <div class="section-header">
+            <span class="section-label">Indexed Guidelines</span>
+            <button id="refresh-docs-btn" class="icon-btn-sm" title="Refresh documents">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </button>
+          </div>
+          <div class="document-list" id="document-list-container">
+            <!-- Dynamically populated document cards -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer User Profile & Settings -->
+      <div class="sidebar-footer">
+        <div class="user-profile-widget" id="user-profile-btn" title="Clinical Staff Profile">
+          <div class="user-avatar" id="user-avatar-initials">SL</div>
+          <div class="user-info">
+            <span class="user-name" id="user-display-name">Dr. Sarah Lin, DDS</span>
+            <span class="user-role" id="user-display-role">Lead Dental Surgeon</span>
+          </div>
+        </div>
+        <div class="footer-actions">
+          <button id="theme-toggle-btn" class="icon-btn-ghost" title="Toggle Light/Dark Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+          <button id="sidebar-settings-btn" class="icon-btn-ghost" title="Settings & LLM Engine">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Main Chatbot Experience Section -->
+    <main class="chat-workspace">
+
+      <!-- Chat Top Navigation Bar -->
+      <header class="chat-header">
+        <div class="chat-header-left">
+          <button id="toggle-sidebar-btn" class="icon-btn" aria-label="Toggle Sidebar Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          
+          <div class="chat-title-group">
+            <h2 id="current-chat-title" class="current-chat-title">Clinical Consultation</h2>
+            <span class="active-status-tag"><span class="pulse-green"></span> Online Copilot</span>
+          </div>
+        </div>
+
+        <div class="chat-header-center">
+          <!-- Active Patient Context Chip in Topbar -->
+          <div class="patient-topbar-chip" id="topbar-patient-pill" title="Click to view/change active patient">
+            <span class="patient-pill-icon">👤</span>
+            <div class="patient-pill-info">
+              <span class="patient-pill-name" id="topbar-patient-name">John Doe</span>
+              <span class="patient-pill-sub" id="topbar-patient-sub">42y • Penicillin Allergy</span>
+            </div>
+            <span class="patient-pill-arrow">▾</span>
+          </div>
+        </div>
+
+        <div class="chat-header-right">
+          <div class="engine-badge" id="engine-status-badge" title="Active AI Engine">
+            <span class="engine-icon">⚡</span>
+            <span id="header-engine-name">Built-in RAG Engine</span>
+          </div>
+
+          <button id="export-notes-btn" class="header-action-btn" title="Export Consultation Notes">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+            <span class="btn-text-desktop">Export</span>
+          </button>
+
+          <button id="clear-chat-btn" class="header-action-btn" title="Clear Conversation">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Clinical Disclaimer Alert Banner -->
+      <div class="clinical-disclaimer-banner" role="alert">
+        <div class="disclaimer-content">
+          <span class="disclaimer-icon">⚠️</span>
+          <p>
+            <strong>Clinical AI Reference:</strong> Intended solely for licensed dental practitioners and assistants. Recommendations are grounded in indexed dental protocols and do not supersede formal examination or professional diagnosis.
+          </p>
+        </div>
+        <button class="disclaimer-dismiss-btn" id="dismiss-disclaimer-btn" aria-label="Dismiss disclaimer">×</button>
+      </div>
+
+      <!-- Conversational Chat Stream Feed -->
+      <div class="chat-feed-container" id="chat-feed">
+        
+        <!-- Welcome Hero State (visible when chat is empty) -->
+        <div class="chat-welcome-hero" id="welcome-hero">
+          <div class="welcome-avatar-wrap">
+            <div class="tooth-icon-welcome">🦷</div>
+          </div>
+          <h2 class="welcome-heading">How can I assist your clinical workflow today?</h2>
+          <p class="welcome-subtext">
+            Evidence-grounded dental assistant copilot. Ask dosage calculations, irrigation sequences, trauma protocols, or patient cross-checks.
+          </p>
+
+          <div class="welcome-categories-grid">
+            <div class="category-card" data-prompt="What is the maximum lidocaine dose for a 30kg child?">
+              <div class="category-icon">💉</div>
+              <div class="category-info">
+                <strong>Local Anesthesia</strong>
+                <p>Max lidocaine dose for 30kg child & cartridge math</p>
+              </div>
+            </div>
+
+            <div class="category-card" data-prompt="How to manage dry socket post extraction?">
+              <div class="category-icon">🦷</div>
+              <div class="category-info">
+                <strong>Extraction & Surgery</strong>
+                <p>Alveolar osteitis (dry socket) irrigation & Alveogyl steps</p>
+              </div>
+            </div>
+
+            <div class="category-card" data-prompt="Can I mix NaOCl and Chlorhexidine in root canal irrigation?">
+              <div class="category-icon">🧪</div>
+              <div class="category-info">
+                <strong>Endodontics</strong>
+                <p>NaOCl + Chlorhexidine chemical warning & EDTA protocol</p>
+              </div>
+            </div>
+
+            <div class="category-card" data-prompt="An avulsed permanent central incisor was dry for 25 minutes. What is the replantation and splinting protocol?">
+              <div class="category-icon">🩹</div>
+              <div class="category-info">
+                <strong>Pediatric Trauma</strong>
+                <p>Tooth avulsion replantation, storage media & splinting</p>
+              </div>
+            </div>
+
+            <div class="category-card" data-prompt="Patient has penicillin allergy. What antibiotic should I prescribe for dental infection?">
+              <div class="category-icon">⚠️</div>
+              <div class="category-info">
+                <strong>Safety & Allergies</strong>
+                <p>Antibiotic alternatives (Clindamycin, Azithromycin)</p>
+              </div>
+            </div>
+
+            <div class="category-card" data-prompt="Can routine dental extractions proceed if patient is on Warfarin with INR 2.4?">
+              <div class="category-icon">🩸</div>
+              <div class="category-info">
+                <strong>Anticoagulants</strong>
+                <p>Warfarin extraction safety & local hemostatic measures</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat messages dynamically appended here -->
+
+      </div>
+
+      <!-- Floating Scroll-To-Bottom Button -->
+      <button id="scroll-bottom-btn" class="scroll-bottom-btn hidden" title="Scroll to bottom">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+
+      <!-- Bottom Chat Input Dock -->
+      <div class="chat-input-dock">
+        
+        <!-- Active Patient Quick Banner above input -->
+        <div class="active-patient-bar" id="input-patient-bar">
+          <div class="patient-bar-left">
+            <span class="pulse-dot"></span>
+            <span>Active Patient Context: <strong id="input-patient-name">John Doe</strong> <span id="input-patient-tags">(Age 42 • Penicillin Allergy)</span></span>
+          </div>
+          <button type="button" class="btn-text-sm" id="change-patient-btn">Switch Patient</button>
+        </div>
+
+        <!-- Voice Dictation Live Banner (appears when listening) -->
+        <div id="voice-dictation-banner" class="voice-dictation-banner hidden">
+          <div class="voice-pulse-ring"></div>
+          <span class="voice-status-text">🎙️ Listening to chairside dictation... Speak now</span>
+          <button type="button" id="cancel-voice-btn" class="btn-text-sm">Cancel</button>
+        </div>
+
+        <!-- Input Form -->
+        <form id="chat-form" class="chat-input-form">
+          <div class="input-controls-wrap">
+            
+            <!-- Attach File Button -->
+            <button type="button" id="attach-file-btn" class="icon-btn-input" title="Attach document to RAG library">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            </button>
+            <input type="file" id="inline-file-input" class="hidden" accept=".pdf,.txt,.md,.json,.csv" />
+
+            <!-- Textarea -->
+            <textarea 
+              id="query-input" 
+              class="chat-textarea" 
+              placeholder="Ask a clinical question, calculate dosages, or search dental records..." 
+              rows="1"
+              required
+            ></textarea>
+
+            <!-- Voice Dictation Button (Web Speech API) -->
+            <button type="button" id="voice-dictation-btn" class="icon-btn-input voice-btn" title="Chairside Voice Dictation (Hands-Free)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </button>
+
+            <!-- Send Button -->
+            <button type="submit" id="send-btn" class="btn btn-primary send-btn" aria-label="Send message">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+
+          </div>
+          
+          <div class="input-subtext">
+            <span>Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for new line • Voice dictation supported</span>
+          </div>
+        </form>
+
+      </div>
+
+    </main>
+
+    <!-- Source Chunk Modal -->
+    <div id="source-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-source-title">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <span class="modal-icon">📄</span>
+            <div>
+              <h3 id="modal-source-title" class="modal-title">Retrieved Clinical Source</h3>
+              <p id="modal-source-meta" class="modal-subtitle">Document • Section • Match Score</p>
+            </div>
+          </div>
+          <button id="close-source-modal-btn" class="close-modal-btn" aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="source-match-meter">
+            <span>Semantic Relevance:</span>
+            <div class="meter-bar-wrap">
+              <div id="modal-match-fill" class="meter-bar-fill" style="width: 85%;"></div>
+            </div>
+            <strong id="modal-match-text">85% Match</strong>
+          </div>
+          <div class="source-excerpt-box">
+            <pre id="modal-chunk-text" class="source-code-view"></pre>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="copy-chunk-btn" class="btn btn-secondary">Copy Excerpt</button>
+          <button id="close-source-modal-btn2" class="btn btn-primary">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Document Inspection Modal -->
+    <div id="doc-preview-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-card modal-lg">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <span class="modal-icon">📚</span>
+            <div>
+              <h3 id="preview-doc-title" class="modal-title">Document Inspection</h3>
+              <p id="preview-doc-meta" class="modal-subtitle">Total Chunks & Preview</p>
+            </div>
+          </div>
+          <button id="close-doc-modal-btn" class="close-modal-btn">×</button>
+        </div>
+        <div class="modal-body" id="preview-chunks-container">
+          <!-- Chunks dynamically loaded -->
+        </div>
+        <div class="modal-footer">
+          <button id="close-doc-modal-btn2" class="btn btn-primary">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Patient Profile Editor Modal -->
+    <div id="patient-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <span class="modal-icon">👤</span>
+            <div>
+              <h3 class="modal-title">Edit Patient Clinical Profile</h3>
+              <p class="modal-subtitle">Update patient alerts, conditions, and treatment plan</p>
+            </div>
+          </div>
+          <button id="close-patient-modal-btn" class="close-modal-btn">×</button>
+        </div>
+        <form id="patient-edit-form" class="modal-body">
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="modal-patient-name">Patient Name</label>
+              <input type="text" id="modal-patient-name" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label for="modal-patient-age">Age</label>
+              <input type="number" id="modal-patient-age" class="form-input" min="1" max="110" required />
+            </div>
+          </div>
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="modal-patient-gender">Biological Sex</label>
+              <select id="modal-patient-gender" class="form-select">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="modal-patient-treatment">Treatment Type</label>
+              <select id="modal-patient-treatment" class="form-select">
+                <option value="Oral Surgery & Implant">Oral Surgery & Implant</option>
+                <option value="Endodontics">Endodontics</option>
+                <option value="Periodontics">Periodontics</option>
+                <option value="Pediatric Trauma">Pediatric Trauma</option>
+                <option value="Restorative Dentistry">Restorative Dentistry</option>
+                <option value="General Consultation">General Consultation</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Medical Alerts & Drug Allergies</label>
+            <div class="tags-container" id="modal-alerts-tags"></div>
+            <div class="tag-input-row" style="margin-top: 0.4rem;">
+              <input type="text" id="modal-new-alert-input" class="form-input-sm" placeholder="Add alert (e.g. Penicillin Allergy, Warfarin)..." />
+              <button type="button" id="modal-add-alert-btn" class="btn-sm btn-secondary">+ Add</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="modal-patient-complaint">Chief Complaint</label>
+            <textarea id="modal-patient-complaint" class="form-textarea" rows="2"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="cancel-patient-modal-btn" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- LLM Settings Modal -->
+    <div id="settings-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <span class="modal-icon">⚙️</span>
+            <div>
+              <h3 id="settings-title" class="modal-title">AI Engine & Clinical RAG Config</h3>
+              <p class="modal-subtitle">Choose between Built-in Dental Engine, Gemini, or OpenAI</p>
+            </div>
+          </div>
+          <button id="close-settings-btn" class="close-modal-btn">×</button>
+        </div>
+        <form id="settings-form" class="modal-body">
+          <div class="form-group">
+            <label for="provider-select">LLM Engine</label>
+            <select id="provider-select" class="form-select">
+              <option value="builtin">Built-in Dental Clinical Engine (100% Offline • No Key Required)</option>
+              <option value="gemini">Google Gemini API (gemini-1.5-flash)</option>
+              <option value="openai">OpenAI API (gpt-4o-mini)</option>
+            </select>
+            <span class="form-hint">The Built-in engine works immediately without external keys, strictly grounding answers in your dental files.</span>
+          </div>
+
+          <div id="gemini-config-group" class="form-group hidden">
+            <label for="gemini-api-key">Gemini API Key</label>
+            <input type="password" id="gemini-api-key" class="form-input" placeholder="Enter your Gemini API key..." />
+            <span class="form-hint">Stored securely locally in data/config.json.</span>
+          </div>
+
+          <div id="openai-config-group" class="form-group hidden">
+            <label for="openai-api-key">OpenAI API Key</label>
+            <input type="password" id="openai-api-key" class="form-input" placeholder="sk-..." />
+            <span class="form-hint">Stored securely locally in data/config.json.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="temperature-slider">Creativity / Temperature: <span id="temp-val">0.2</span></label>
+            <input type="range" id="temperature-slider" class="form-range" min="0" max="1" step="0.05" value="0.2" />
+            <span class="form-hint">Lower temperature (0.1 - 0.3) ensures maximum clinical grounding and avoids hallucinations.</span>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" id="cancel-settings-btn" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Configuration</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Staff Sign In Modal -->
+    <div id="auth-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-card modal-auth">
+        <div class="auth-header">
+          <div class="tooth-icon-large">🦷</div>
+          <h2>Dental Clinic Sign In</h2>
+          <p>Sign in to access patient records and clinical assistant tools.</p>
+        </div>
+
+        <div class="auth-quick-select">
+          <span class="quick-title">Quick Demo Login:</span>
+          <div class="demo-buttons-grid">
+            <button class="demo-user-btn" data-user="drsarah" data-pass="password123">
+              <strong>Dr. Sarah Lin, DDS</strong>
+              <span>Lead Surgeon</span>
+            </button>
+            <button class="demo-user-btn" data-user="alexrda" data-pass="password123">
+              <strong>Alex Rivera, RDA</strong>
+              <span>Dental Assistant</span>
+            </button>
+            <button class="demo-user-btn" data-user="demo" data-pass="demo">
+              <strong>Dr. Alex Taylor, DMD</strong>
+              <span>General Dentist</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="auth-divider">
+          <span>Or sign in with credentials</span>
+        </div>
+
+        <form id="auth-form" class="auth-form">
+          <div class="form-group">
+            <label for="auth-username">Staff Username</label>
+            <input type="text" id="auth-username" class="form-input" value="drsarah" required />
+          </div>
+          <div class="form-group">
+            <label for="auth-password">Password</label>
+            <input type="password" id="auth-password" class="form-input" value="password123" required />
+          </div>
+          <div id="auth-error-msg" class="auth-error hidden"></div>
+          <button type="submit" class="btn btn-primary btn-block">Sign In to Clinic</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+      <span id="toast-icon">✓</span>
+      <span id="toast-msg">Action successful</span>
+    </div>
+
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

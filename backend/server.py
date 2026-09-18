@@ -289,17 +289,28 @@ def update_config(req: ConfigUpdateRequest):
     return {"success": True, "message": "Configuration updated successfully."}
 
 # Mount static frontend
-FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
+BASE_PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
+PUBLIC_DIR = os.path.join(BASE_PROJECT_DIR, "public")
+FRONTEND_DIR = PUBLIC_DIR if os.path.exists(PUBLIC_DIR) else os.path.join(BASE_PROJECT_DIR, "frontend")
+
 if os.path.exists(FRONTEND_DIR):
     app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
     @app.get("/")
     def serve_root():
-        return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+        index_path = os.path.join(FRONTEND_DIR, "index.html")
+        if not os.path.exists(index_path) and os.path.exists(os.path.join(BASE_PROJECT_DIR, "frontend", "index.html")):
+            index_path = os.path.join(BASE_PROJECT_DIR, "frontend", "index.html")
+        return FileResponse(index_path)
 
     @app.get("/{full_path:path}")
     def serve_static(full_path: str):
+        # Look in primary frontend directory first, then fallback to other directory
         target = os.path.join(FRONTEND_DIR, full_path)
+        if not os.path.exists(target):
+            alt_dir = os.path.join(BASE_PROJECT_DIR, "frontend") if FRONTEND_DIR == PUBLIC_DIR else PUBLIC_DIR
+            target = os.path.join(alt_dir, full_path)
+
         if os.path.exists(target) and os.path.isfile(target):
             media_type = None
             if full_path.endswith('.css'):
@@ -314,3 +325,4 @@ if os.path.exists(FRONTEND_DIR):
                 media_type = 'image/png'
             return FileResponse(target, media_type=media_type)
         return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+
